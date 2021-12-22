@@ -1,0 +1,25 @@
+{% extends "application/index.html" %}
+
+{% block searchresult %}
+
+{% load staticfiles %}
+
+{% if imagelist %}
+{% for img in imagelist %}
+    <img src = "/static/uploads/{{img}}" style="width:250px; height:250px;" >
+{% endfor %}
+
+{% else %}
+  <p>SORRY!!! No Image Found</p>
+
+{% endif %}
+
+{% endblock %}
+
+<!--<script type="text/javascript">
+  var x = $('.result');
+  if (x){
+    $('.mdl-mega-footer').addClass('hidden');
+}
+</script>
+-->

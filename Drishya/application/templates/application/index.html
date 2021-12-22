@@ -1,0 +1,64 @@
+{% extends "application/base.html" %}
+
+{% block content %}
+
+<div class="page-content" style="position:float;"><!-- style="padding-left:100px;"-->
+  <div id="overlay"></div>
+  <div class="fab">
+    <i class="material-icons" id="fab1">attach_file</i>
+    <div class="cntt-wrapper">
+      <form method="post" action="/uploads" enctype="multipart/form-data">
+        <div id="fab-hdr">
+          <h3>Upload Image</h3>
+        </div>
+
+        <div class="cntt">
+          {% csrf_token %}
+          <input type="file" id="uploadBtn" name="myfile">
+        </div>
+
+        <div class="btn-wrapper">
+          <!-- <button class="mdl-button mdl-js-button" id="cancel" style="color: white;">Cancel</button> -->
+          <button class="mdl-button mdl-js-button mdl-button--primary" id="submit" type="submit" style="color:white; ">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="sw" style="padding-left:75px; padding-top: 5%; width:300px;">
+    <form method="get" action="/results" enctype="multipart/form-data" role="search" >
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <input name="result" type="search" class="search" value="" placeholder="Search..." style="height:33px; width:250px" required/>
+    </form>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+  $('.fab').click ( function () {
+    $('.fab').addClass ('active');
+    $('#overlay').addClass ('dark-overlay');
+  });
+  $('#overlay').click (function (){
+    $('.fab').removeClass('active');
+    $('#overlay').removeClass ('dark-overlay');
+  });
+  $(document).keypress(function(e) {
+  //if (e.keyCode === 13) $('#submit').click();      enter
+  if (e.keyCode === 27) $('#overlay').click();   // esc
+});
+</script>
+</br>
+<div class="display_content" style="height:600px; width:100%; padding-left:40px;">
+
+{% block uploadimage %}
+
+{% endblock%}
+
+
+{% block searchresult %}
+
+{% endblock %}
+</div>
+
+{% endblock %}

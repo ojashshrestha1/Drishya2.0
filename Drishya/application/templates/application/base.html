@@ -1,0 +1,197 @@
+{% load static %}
+
+<html>
+
+<head>
+<title>Drishya</title>
+
+<link rel="stylesheet" href="{% static 'node_modules/material-design-lite/material.min.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'node_modules/material-design-icons/iconfont/material-icons.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}" type="text/css">
+
+<script src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'node_modules/material-design-lite/material.min.js' %}"></script>
+
+<!-- Uses a transparent header that draws on top of the layout's background
+<script>
+  function openfiledialog(elemId)
+  {
+     var elem = document.getElementById(elemId);
+     if(elem && document.createEvent) {
+        var evt = document.createEvent("MouseEvents");
+        evt.initEvent("click", true, false);
+        elem.dispatchEvent(evt);
+      }
+     }
+-->
+
+</head>
+
+<body>
+
+
+<style>
+
+body{
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+/* transparent templates */
+.demo-layout-transparent {
+  background: url({% static 'images/3.jpg' %}) center / cover;
+}
+.demo-layout-transparent .mdl-layout__header {
+/*.demo-layout-transparent .mdl-layout__drawer-button */
+
+  /* This background is dark, so we set text to white. Use 87% black instead if
+     your background is light. */
+  color: black;
+  z-index: 8;
+}
+
+/*.mdl-textfield--file .mdl-textfield__input {
+  box-sizing: border-box;
+  width: calc(100% - 32px);
+  display: none;
+}
+.mdl-textfield--file .mdl-button--file {
+  right: 0;
+}*/
+
+.display_content {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+/* upload popup */
+.cntt-wrapper {
+  display: none;
+}
+.cntt {
+  padding: 100px 35px 0 35px;
+  color: #dcdcdc;
+}
+.fab {
+  z-index: 5;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 5%;
+  top: 9%;
+  color: #dcdcdc;
+  background: black;
+  height: 45px;
+  width: 45px;
+  box-shadow: 0 5px 5px rgba(126, 111, 111, 0.9);
+  -webkit-transition: all 600ms cubic-bezier(0.200, 0.965, 0.000, 1.005);
+  transition: all 600ms cubic-bezier(0.200, 0.965, 0.000, 1.005);
+}
+.fab.active {
+  cursor: default;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: .125em;
+  width: 450px;
+  height: 350px;
+  box-shadow: 0 25px 35px 0 rgba(0, 0, 0, 0.3);
+  top: 10%;
+  right: calc(50% - 250px);
+}
+.active .cntt-wrapper {
+  display: block;
+}
+.dark-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 5;
+  -webkit-transition: all 600ms cubic-bezier(0.200, 0.965, 0.000, 1.005);
+  transition: all 600ms cubic-bezier(0.200, 0.965, 0.000, 1.005);
+}
+#fab1 {
+  position: absolute;
+  display: block;
+  color: white;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-12px, -12px);
+  -ms-transform: translate(-12px, -12px);
+  transform: translate(-12px, -12px);
+  line-height: 24px;
+  width: 24px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#fab-hdr {
+  position: absolute;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+#fab-hdr h3 {
+  padding-left: 30px;
+}
+.btn-wrapper {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: white;
+  margin-bottom: 8px;
+  padding: 6px 16px;
+}
+
+
+/*footer*/
+.mdl-mega-footer {
+  z-index: 8;
+}
+/*.mdl-mega-footer .hidden {
+  display: none;
+}
+*/
+</style>
+
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+
+  <header class="mdl-layout__header mdl-layout__header--transparent" style="position: fixed;">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title" style="height:40px; font-size:35px; font-weight:"bold"; ">Drishya</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="/">Home</a>
+      <!--  <input type="file" id="theFile" style="display:none;"/>
+        <a class="mdl-navigation__link" href="#" onclick="openfiledialog('theFile'); return;">Upload Image</a>-->
+        <a class="mdl-navigation__link" href="/admin">Admin</a>
+        <a class="mdl-navigation__link" href="/aboutus">About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mdl-layout__content">
+      {% block content %}
+      {% endblock %}
+  </main>
+
+  <footer class="mdl-mega-footer" style="height: 20px; position: fixed; bottom: 0; width: 100vw; background-color: rgba(0, 0, 0, 0.8);">
+    <div class="mdl-mega-footer__bottom-section">
+        <div class="mdl-mega-footer__left-section">
+        <div class="mdl-logo"></div>
+        <ul class="mdl-mega-footer__link-list" script="height:30px; padding-left:75px;">
+          <li><a href="#">Help</a></li>
+          <li><i class="fa fa-copyright" aria-hidden="true">All rights reserved</i></li>
+        </ul>
+        </div>
+    </div>
+  </footer>
+</div>
+
+
+
+</body>
+</html>

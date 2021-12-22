@@ -1,0 +1,56 @@
+{% extends "application/base.html" %}
+
+{% block content %}
+
+{% load staticfiles %}
+<!--<h1 align="center">About Us</h1>-->
+<style>
+.mdl-grid {
+    padding-top: 4.5%;
+    padding-left: 85px;
+    height: 600px;
+    width: 100%;
+}
+
+p {
+    font-size: 18px;
+    font-family: "Times New Roman", Times, serif;
+    color: gray;
+    align-content: center;
+}
+</style>
+<div class="mdl-grid">
+
+<div class="mdl-cell mdl-cell--6-col">
+    <img src="{% static "images/sumedh.jpg" %}" style="width:175px;height:200px;" align="center" border="3">
+
+ <div>
+    <p class="serif" ><a href="https://www.facebook.com/sumedh.shakya.963">Sumedh Shakya</a>
+  <br> 86/BCT/070
+  </p>
+ </div>
+</div>
+<div class="mdl-cell mdl-cell--6-col">
+	 <img src="{% static "images/ojash.jpg" %}" style="width:175px;height:200px;" align="center" border="3">
+ <div>
+    <p class="serif" > <a href="https://www.facebook.com/ojashshrest">Ojash Shrestha</a>
+  <br> 64/BCT/070</p>
+ </div>
+</div>
+  <div class="mdl-cell mdl-cell--6-col">
+	 <img src="{% static "images/milinda.jpg" %}" style="width:175px;height:200px;" align="center" border="3">
+ <div>
+    <p class="serif" ><a href="https://www.facebook.com/milinda.shakya.7">Milinda Shakya</a>
+   <br> 60/BCT/070</p>
+ </div>
+</div>
+ <div class="mdl-cell mdl-cell--6-col">
+	 <img src="{% static "images/samir.jpg" %}" style="width:175px;height:200px;" align="center" border="3">
+ <div>
+    <p class="serif" ><a href="https://www.facebook.com/samir.thapa.961">Samir Thapa</a>
+   <br> 72/BCT/070</p>
+ </div>
+ </div>
+</div>
+
+{% endblock %}
